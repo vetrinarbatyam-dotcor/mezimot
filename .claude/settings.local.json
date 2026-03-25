@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)",
+      "Bash(where npm:*)",
+      "Bash(where node:*)"
+    ]
+  }
+}

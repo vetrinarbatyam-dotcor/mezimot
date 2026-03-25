@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>מזימות - משחק קלפים</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Landing Screen -->
+    <div id="landing" class="screen active">
+      <div class="logo">
+        <h1>🃏 מזימות</h1>
+        <p class="subtitle">משחק הקלפים והבלופים</p>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="playerName" placeholder="השם שלך" maxlength="12" autofocus>
+      </div>
+
+      <div class="buttons-row">
+        <button id="btnCreate" class="btn btn-primary">צור משחק</button>
+        <button id="btnJoinShow" class="btn btn-secondary">הצטרף למשחק</button>
+      </div>
+
+      <div id="joinForm" class="hidden">
+        <div class="form-group">
+          <input type="text" id="roomCode" placeholder="קוד חדר (4 ספרות)" maxlength="4" inputmode="numeric">
+        </div>
+        <button id="btnJoin" class="btn btn-primary">הצטרף</button>
+      </div>
+
+      <div id="errorMsg" class="error hidden"></div>
+    </div>
+
+    <!-- Lobby Screen -->
+    <div id="lobby" class="screen">
+      <h2>חדר משחק</h2>
+      <div class="room-code-display">
+        קוד חדר: <span id="lobbyCode" class="code-badge"></span>
+        <button id="btnCopyCode" class="btn btn-small">העתק</button>
+      </div>
+
+      <div id="playerList" class="player-list"></div>
+
+      <div id="hostControls" class="hidden">
+        <div class="buttons-row">
+          <button id="btnAddAI" class="btn btn-secondary">➕ הוסף בוט</button>
+          <button id="btnStartGame" class="btn btn-primary" disabled>התחל משחק</button>
+        </div>
+        <p class="hint">נדרשים לפחות 3 שחקנים</p>
+      </div>
+
+      <div id="waitingMsg" class="hidden">
+        <p>ממתינים שהמארח יתחיל את המשחק...</p>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game" class="screen">
+      <!-- Other players (top area) -->
+      <div id="otherPlayers" class="other-players"></div>
+
+      <!-- Table center -->
+      <div id="tableCenter" class="table-center">
+        <div id="quartetsArea" class="quartets-area"></div>
+        <div id="actionLog" class="action-log"></div>
+      </div>
+
+      <!-- Action panel -->
+      <div id="actionPanel" class="action-panel hidden">
+        <!-- Dynamic content based on game phase -->
+      </div>
+
+      <!-- My hand -->
+      <div id="myHand" class="my-hand"></div>
+
+      <!-- Turn indicator -->
+      <div id="turnIndicator" class="turn-indicator"></div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOver" class="screen">
+      <div class="game-over-content">
+        <h2 id="gameOverTitle"></h2>
+        <div id="gameOverDetails"></div>
+        <button id="btnBackToLobby" class="btn btn-primary">חזרה לדף הבית</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
